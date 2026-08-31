@@ -1,0 +1,574 @@
+<title>Katalog Rendang Rantau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --ground:#F5F4EF; --surface:#FFFFFF; --surface-2:#EFEDE5;
+  --line:#DFDCD0; --ink:#16140F; --ink-2:#3B372E; --muted:#6E6858;
+  --leaf:#1E3B2A; --leaf-2:#2F5A3F; --leaf-soft:#E4EDE5;
+  --amber:#8A6408; --amber-soft:#F7EBCE;
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#111310; --surface:#191C17; --surface-2:#20241E;
+    --line:#2F342C; --ink:#EFEDE3; --ink-2:#CBC8BB; --muted:#8F8B7D;
+    --leaf:#8FBF9E; --leaf-2:#A8CFB5; --leaf-soft:#1B2920;
+    --amber:#E0B44A; --amber-soft:#2C2513;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#111310; --surface:#191C17; --surface-2:#20241E;
+  --line:#2F342C; --ink:#EFEDE3; --ink-2:#CBC8BB; --muted:#8F8B7D;
+  --leaf:#8FBF9E; --leaf-2:#A8CFB5; --leaf-soft:#1B2920;
+  --amber:#E0B44A; --amber-soft:#2C2513;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;margin:0;line-height:1.14;text-wrap:balance}
+p{margin:0}
+img{max-width:100%;display:block}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.mono{font-family:"DM Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"DM Mono",monospace;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+
+/* hero */
+.hero{padding:52px 0 44px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:-.02em;margin-top:10px}
+.hero h1 em{font-style:italic;color:var(--leaf-2)}
+.hero .lede{margin-top:16px;font-size:1.06rem;color:var(--ink-2);max-width:44ch}
+.route{margin-top:22px;display:flex;align-items:center;gap:11px;flex-wrap:wrap;
+  font-family:"DM Mono",monospace;font-size:.8rem;color:var(--muted)}
+.route .dash{width:28px;height:1px;background:var(--line)}
+.cta-row{margin-top:26px;display:flex;flex-wrap:wrap;gap:11px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font:inherit;font-weight:600;font-size:.95rem;padding:13px 22px;border-radius:999px;
+  border:1px solid transparent;cursor:pointer;text-decoration:none;
+  transition:transform .12s ease}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--leaf);color:#F4F9F4}
+:root[data-theme="dark"] .btn-primary{color:#101410}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn-primary{color:#101410}}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+
+/* photo */
+.photo{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;
+  background:radial-gradient(120% 90% at 25% 20%, #7A4423 0%, #4A2714 48%, #2A160C 100%);
+  display:flex;align-items:flex-end}
+.photo::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(38% 30% at 68% 30%, rgba(230,160,70,.30), transparent 70%),
+             radial-gradient(26% 22% at 30% 68%, rgba(190,70,40,.28), transparent 70%)}
+.photo .tag{position:relative;z-index:1;margin:11px;font-family:"DM Mono",monospace;
+  font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,244,230,.8);background:rgba(20,10,4,.45);padding:5px 9px;border-radius:6px}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo.v2{background:radial-gradient(120% 90% at 30% 25%, #92321F 0%, #5C1E12 50%, #2E0F09 100%)}
+.photo.v3{background:radial-gradient(120% 90% at 30% 25%, #6B4A22 0%, #3E2911 52%, #221408 100%)}
+
+/* sections */
+section{padding:50px 0}
+.sec-head{max-width:54ch;margin-bottom:28px}
+.sec-head h2{font-size:clamp(1.55rem,3vw,2.1rem);letter-spacing:-.015em}
+.sec-head p{margin-top:11px;color:var(--muted)}
+
+/* cara kerja */
+.rail{background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr)}
+.step{padding:26px 20px 26px 0}
+.step + .step{padding-left:22px;border-left:1px solid var(--line)}
+.step .n{font-family:"DM Mono",monospace;font-size:.72rem;color:var(--leaf-2);letter-spacing:.1em}
+.step h3{font-family:"Instrument Sans",sans-serif;font-size:1rem;font-weight:600;margin-top:8px}
+.step p{margin-top:6px;font-size:.88rem;color:var(--muted)}
+
+/* menu + panel */
+.builder{display:grid;grid-template-columns:1fr 350px;gap:32px;align-items:start}
+.menu{display:grid;gap:15px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:15px;display:grid;grid-template-columns:110px 1fr;gap:15px}
+.card .photo{aspect-ratio:1;border-radius:10px}
+.card h3{font-family:"Instrument Sans",sans-serif;font-size:1.04rem;font-weight:600}
+.card .desc{font-size:.86rem;color:var(--muted);margin-top:4px}
+.variants{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.variant{display:flex;align-items:center;gap:10px;border:1px solid var(--line);
+  border-radius:10px;padding:6px 6px 6px 11px;background:var(--ground)}
+.variant .v-meta{font-size:.82rem;line-height:1.3}
+.variant .v-meta b{display:block;font-weight:600;font-size:.85rem}
+.variant .v-meta span{color:var(--muted);font-family:"DM Mono",monospace;font-size:.74rem}
+.stepper{display:flex;align-items:center;gap:2px}
+.stepper button{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink);font:inherit;font-size:1rem;line-height:1;
+  cursor:pointer;display:grid;place-items:center}
+.stepper button:hover{border-color:var(--leaf-2)}
+.stepper button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.stepper .q{min-width:24px;text-align:center;font-family:"DM Mono",monospace;
+  font-size:.9rem;font-variant-numeric:tabular-nums}
+
+.panel{position:sticky;top:20px;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:19px;
+  box-shadow:0 1px 2px rgba(22,20,15,.05),0 10px 28px -16px rgba(22,20,15,.22)}
+.panel h3{font-family:"Instrument Sans",sans-serif;font-size:1rem;font-weight:600}
+.field{margin-top:15px}
+.field label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:6px}
+select{width:100%;font:inherit;font-size:.92rem;padding:10px 11px;border:1px solid var(--line);
+  border-radius:10px;background:var(--ground);color:var(--ink)}
+select:focus-visible{outline:2px solid var(--amber);outline-offset:1px}
+.cart-items{margin-top:13px;display:grid;gap:6px;font-size:.85rem}
+.cart-item{display:flex;justify-content:space-between;gap:12px;color:var(--ink-2)}
+.cart-item .q{color:var(--muted);font-family:"DM Mono",monospace}
+.empty{font-size:.86rem;color:var(--muted);font-style:italic}
+.lines{margin-top:16px;border-top:1px solid var(--line);padding-top:13px;display:grid;gap:8px}
+.line{display:flex;justify-content:space-between;gap:14px;font-size:.9rem}
+.line .k{color:var(--muted)}
+.line .v{font-family:"DM Mono",monospace;font-variant-numeric:tabular-nums}
+.line.total{border-top:1px solid var(--line);margin-top:5px;padding-top:11px;
+  font-size:1.04rem;font-weight:600}
+.line.total .k{color:var(--ink)}
+.line.total .v{font-weight:500}
+.panel .btn{width:100%;margin-top:15px}
+.note{font-size:.76rem;color:var(--muted);margin-top:10px;line-height:1.5}
+
+/* ongkir */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:420px}
+th,td{text-align:left;padding:11px 15px;border-bottom:1px solid var(--line)}
+th{font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+  font-weight:500;font-family:"DM Mono",monospace}
+tr:last-child td{border-bottom:0}
+td.num{font-family:"DM Mono",monospace;font-variant-numeric:tabular-nums;text-align:right}
+
+/* trust */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:19px}
+.tile .eyebrow{color:var(--leaf-2)}
+.tile h3{font-family:"Instrument Sans",sans-serif;font-size:1rem;font-weight:600;margin-top:9px}
+.tile p{margin-top:7px;font-size:.88rem;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--muted);font-size:.84rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+footer a{color:var(--leaf-2)}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,150%);
+  background:var(--ink);color:var(--ground);padding:12px 19px;border-radius:11px;
+  font-size:.87rem;z-index:60;opacity:0;visibility:hidden;pointer-events:none;
+  transition:transform .28s cubic-bezier(.2,.8,.3,1),opacity .2s,visibility .28s;
+  max-width:calc(100vw - 40px);text-align:center}
+.toast.on{transform:translate(-50%,0);opacity:1;visibility:visible}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+  .builder{grid-template-columns:1fr}
+  .panel{position:static}
+  .grid3{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .steps{grid-template-columns:1fr}
+  .step + .step{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+  .step{padding-right:0}
+  .card{grid-template-columns:1fr}
+  .card .photo{aspect-ratio:16/9}
+  .hero{padding:36px 0 30px}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow" id="brandEyebrow"></p>
+      <h1>Dimasak setelah kamu pesan.<br><em>Besoknya sampai.</em></h1>
+      <p class="lede">Rendang dan dendeng yang baru turun dari kuali hari itu juga, dikemas rapat, lalu dikirim. Tidak ada stok yang menunggu berbulan-bulan di gudang.</p>
+      <div class="route">
+        <span id="routeFrom"></span><span class="dash" aria-hidden="true"></span><span id="routeTo"></span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#pesan">Lihat menu &amp; harga</a>
+        <a class="btn btn-ghost" id="waPlain" href="#" target="_blank" rel="noopener">Tanya dulu lewat WhatsApp</a>
+      </div>
+    </div>
+    <div class="photo" id="heroPhoto"><span class="tag">Foto produk</span></div>
+  </div>
+</header>
+
+<div class="rail">
+  <div class="wrap">
+    <div class="steps">
+      <div class="step">
+        <div class="n">TAHAP 1</div>
+        <h3>Pesan lewat WhatsApp</h3>
+        <p>Pilih di halaman ini, tekan tombol pesan. Pesananmu terkirim lengkap, tidak perlu ketik ulang.</p>
+      </div>
+      <div class="step">
+        <div class="n">TAHAP 2</div>
+        <h3>Dimasak hari itu</h3>
+        <p>Bahan dibeli pagi, rendang dimasak berjam-jam sampai kering, lalu dikemas rapat.</p>
+      </div>
+      <div class="step">
+        <div class="n">TAHAP 3</div>
+        <h3>Dikirim &amp; dilacak</h3>
+        <p>Nomor resi dikirim lewat WhatsApp begitu paket berangkat.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="pesan">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Menu</p>
+      <h2>Pilih pesananmu</h2>
+      <p>Ongkir dihitung dari berat total, jadi memesan sekaligus lebih hemat daripada dicicil.</p>
+    </div>
+    <div class="builder">
+      <div class="menu" id="menu"></div>
+      <aside class="panel" aria-label="Ringkasan pesanan">
+        <h3>Pesananmu</h3>
+        <div class="cart-items" id="cartItems"><p class="empty">Belum ada yang dipilih.</p></div>
+        <div class="field">
+          <label for="dest">Kota tujuan</label>
+          <select id="dest"><option value="">— pilih kota —</option></select>
+        </div>
+        <div class="lines">
+          <div class="line"><span class="k">Subtotal</span><span class="v" id="sSub">Rp 0</span></div>
+          <div class="line"><span class="k">Berat kirim</span><span class="v" id="sWeight">0 g</span></div>
+          <div class="line"><span class="k">Ongkir <span id="sTier" class="mono" style="font-size:.76rem;color:var(--muted)"></span></span><span class="v" id="sShip">—</span></div>
+          <div class="line total"><span class="k">Total</span><span class="v" id="sTotal">Rp 0</span></div>
+        </div>
+        <a class="btn btn-primary" id="orderBtn" href="#" target="_blank" rel="noopener">Pesan lewat WhatsApp</a>
+        <p class="note">Tombol ini membuka WhatsApp dengan pesananmu sudah tertulis lengkap. Pembayaran dan alamat dibicarakan langsung di chat.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Ongkos kirim</p>
+      <h2>Daftar ongkir</h2>
+      <p>Dihitung per kilogram dan dibulatkan ke atas. Kota lain silakan tanya lewat WhatsApp.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Kota tujuan</th><th style="text-align:right">Per kg</th><th style="text-align:right">Estimasi tiba</th></tr></thead>
+        <tbody id="rateBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="grid3">
+      <div class="tile">
+        <p class="eyebrow">Tanggal masak</p>
+        <h3>Tertera di kemasan</h3>
+        <p>Setiap paket diberi label tanggal masak dan batas konsumsi, jadi jelas kapan dibuatnya.</p>
+      </div>
+      <div class="tile">
+        <p class="eyebrow">Pengemasan</p>
+        <h3>Dikemas rapat</h3>
+        <p>Rendang kering yang dikemas rapat tahan lama di suhu ruang, tanpa pengawet tambahan.</p>
+      </div>
+      <div class="tile">
+        <p class="eyebrow">Izin</p>
+        <h3 id="izinTitle">Terdaftar P-IRT</h3>
+        <p id="izinText">Nomor izin dicantumkan di kemasan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span id="footBrand"></span>
+    <span><a id="waFoot" href="#" target="_blank" rel="noopener">WhatsApp</a></span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   ISI BAGIAN INI SAJA. Sisanya tidak perlu disentuh.
+
+   1. TOKO   — nama usaha, nomor WA, kota asal, nomor izin
+   2. PRODUK — daftar produk & varian. Berat dalam GRAM,
+               dan pakai BERAT SETELAH DIKEMAS, bukan berat isi.
+   3. ONGKIR — tarif per kg tiap kota tujuan.
+
+   Foto: taruh file di folder yang sama, lalu isi "foto":"rendang.webp".
+   Kosongkan ("foto":"") kalau fotonya belum ada — nanti tampil
+   kotak abu bertuliskan "Foto produk".
+   Kompres dulu ke sekitar 200 KB, lebar maks 1200 px.
+   ============================================================ */
+
+var TOKO = {
+  nama:      "[NAMA USAHA]",
+  wa:        "628xxxxxxxxxx",          // format 62, tanpa + dan tanpa spasi
+  kotaAsal:  "Kota Jambi",
+  tujuanUtama: "Jabodetabek · tiba H+1",
+  fotoHero:  "",                        // contoh: "hero.webp"
+  izinNomor: ""                         // kosongkan kalau belum terbit
+};
+
+var PRODUK = [
+  { nama:"Rendang Daging Kering",
+    desc:"Dimasak berjam-jam sampai bumbunya menghitam dan kering. Tahan paling lama.",
+    foto:"", gaya:"",
+    varian:[
+      { label:"250 g", harga:78000,  berat:300 },
+      { label:"500 g", harga:148000, berat:580 }
+    ]},
+  { nama:"Dendeng Balado",
+    desc:"Daging diiris tipis, dijemur, digoreng, lalu disiram sambal balado merah.",
+    foto:"", gaya:"v2",
+    varian:[
+      { label:"200 g", harga:65000,  berat:250 },
+      { label:"400 g", harga:125000, berat:470 }
+    ]},
+  { nama:"[PRODUK KETIGA]",
+    desc:"[Keterangan singkat produk]",
+    foto:"", gaya:"v3",
+    varian:[
+      { label:"250 g", harga:80000, berat:300 }
+    ]}
+];
+
+var ONGKIR = [
+  { kota:"Jakarta",             perKg:38000, etd:"1 hari" },
+  { kota:"Depok",               perKg:38000, etd:"1 hari" },
+  { kota:"Tangerang / Tangsel", perKg:40000, etd:"1 hari" },
+  { kota:"Bekasi",              perKg:42000, etd:"1 hari" },
+  { kota:"Bogor",               perKg:42000, etd:"1–2 hari" },
+  { kota:"Kota Jambi",          perKg:12000, etd:"hari yang sama" }
+];
+
+/* ==================== batas pengisian ==================== */
+
+(function(){
+  "use strict";
+
+  function rp(n){ return "Rp " + n.toLocaleString("id-ID"); }
+  function waLink(text){
+    return "https://wa.me/" + TOKO.wa.replace(/[^0-9]/g,"") +
+           "?text=" + encodeURIComponent(text);
+  }
+
+  /* --- identitas --- */
+  document.getElementById("brandEyebrow").textContent = TOKO.nama + " · " + TOKO.kotaAsal;
+  document.getElementById("routeFrom").textContent = TOKO.kotaAsal.toUpperCase();
+  document.getElementById("routeTo").textContent = TOKO.tujuanUtama.toUpperCase();
+  document.getElementById("footBrand").textContent =
+    TOKO.nama + " — " + TOKO.kotaAsal + (TOKO.izinNomor ? " · P-IRT " + TOKO.izinNomor : "");
+  document.title = "Katalog " + TOKO.nama;
+
+  var salam = "Halo " + TOKO.nama + ", saya mau tanya-tanya dulu soal produknya.";
+  document.getElementById("waPlain").href = waLink(salam);
+  document.getElementById("waFoot").href = waLink(salam);
+
+  if (TOKO.izinNomor){
+    document.getElementById("izinText").textContent =
+      "Nomor izin " + TOKO.izinNomor + ", dicantumkan di kemasan.";
+  } else {
+    document.getElementById("izinTitle").textContent = "Dapur rumahan";
+    document.getElementById("izinText").textContent =
+      "Dimasak sendiri di dapur rumah, dalam jumlah terbatas tiap kali masak.";
+  }
+
+  if (TOKO.fotoHero){
+    var hp = document.getElementById("heroPhoto");
+    hp.innerHTML = "";
+    var im = document.createElement("img");
+    im.src = TOKO.fotoHero; im.alt = TOKO.nama;
+    im.loading = "eager";
+    hp.appendChild(im);
+  }
+
+  /* --- menu --- */
+  var cart = {}, byKey = {}, menu = document.getElementById("menu");
+
+  PRODUK.forEach(function(p, pi){
+    var card = document.createElement("article");
+    card.className = "card";
+
+    var ph = document.createElement("div");
+    ph.className = "photo " + (p.gaya || "");
+    if (p.foto){
+      var im = document.createElement("img");
+      im.src = p.foto; im.alt = p.nama; im.loading = "lazy";
+      ph.appendChild(im);
+    } else {
+      ph.innerHTML = '<span class="tag">Foto produk</span>';
+    }
+
+    var body = document.createElement("div");
+    var h = document.createElement("h3"); h.textContent = p.nama;
+    var d = document.createElement("p"); d.className = "desc"; d.textContent = p.desc;
+    var vs = document.createElement("div"); vs.className = "variants";
+
+    p.varian.forEach(function(v, vi){
+      var key = "p" + pi + "v" + vi;
+      byKey[key] = { p:p, v:v };
+
+      var box = document.createElement("div"); box.className = "variant";
+      var meta = document.createElement("div"); meta.className = "v-meta";
+      var b = document.createElement("b"); b.textContent = v.label;
+      var s = document.createElement("span"); s.textContent = rp(v.harga);
+      meta.appendChild(b); meta.appendChild(s);
+
+      var st = document.createElement("div"); st.className = "stepper";
+      var minus = document.createElement("button");
+      minus.type = "button"; minus.textContent = "−";
+      minus.setAttribute("aria-label","Kurangi " + p.nama + " " + v.label);
+      var q = document.createElement("span");
+      q.className = "q"; q.id = "q-" + key; q.textContent = "0";
+      var plus = document.createElement("button");
+      plus.type = "button"; plus.textContent = "+";
+      plus.setAttribute("aria-label","Tambah " + p.nama + " " + v.label);
+
+      minus.addEventListener("click", function(){ bump(key,-1); });
+      plus.addEventListener("click", function(){ bump(key,1); });
+
+      st.appendChild(minus); st.appendChild(q); st.appendChild(plus);
+      box.appendChild(meta); box.appendChild(st);
+      vs.appendChild(box);
+    });
+
+    body.appendChild(h); body.appendChild(d); body.appendChild(vs);
+    card.appendChild(ph); card.appendChild(body);
+    menu.appendChild(card);
+  });
+
+  /* --- kota tujuan + tabel ongkir --- */
+  var sel = document.getElementById("dest");
+  var tb = document.getElementById("rateBody");
+  ONGKIR.forEach(function(r, i){
+    var o = document.createElement("option");
+    o.value = String(i); o.textContent = r.kota;
+    sel.appendChild(o);
+
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td"); td1.textContent = r.kota;
+    var td2 = document.createElement("td"); td2.className = "num"; td2.textContent = rp(r.perKg);
+    var td3 = document.createElement("td"); td3.className = "num"; td3.textContent = r.etd;
+    tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3);
+    tb.appendChild(tr);
+  });
+
+  function bump(k, d){
+    var cur = cart[k] || 0;
+    var next = Math.max(0, Math.min(50, cur + d));
+    if (next === 0) delete cart[k]; else cart[k] = next;
+    var el = document.getElementById("q-" + k);
+    if (el) el.textContent = String(next);
+    render();
+  }
+
+  var state = { sub:0, weight:0, ship:null, total:0, kota:null, kg:0 };
+
+  function render(){
+    var sub = 0, weight = 0, keys = Object.keys(cart);
+    keys.forEach(function(k){
+      var e = byKey[k];
+      sub += e.v.harga * cart[k];
+      weight += e.v.berat * cart[k];
+    });
+
+    var box = document.getElementById("cartItems");
+    box.innerHTML = "";
+    if (!keys.length){
+      var em = document.createElement("p");
+      em.className = "empty"; em.textContent = "Belum ada yang dipilih.";
+      box.appendChild(em);
+    } else {
+      keys.forEach(function(k){
+        var e = byKey[k];
+        var row = document.createElement("div"); row.className = "cart-item";
+        var a = document.createElement("span");
+        a.textContent = e.p.nama + " " + e.v.label;
+        var b = document.createElement("span");
+        b.className = "q"; b.textContent = "×" + cart[k];
+        row.appendChild(a); row.appendChild(b);
+        box.appendChild(row);
+      });
+    }
+
+    document.getElementById("sSub").textContent = rp(sub);
+    document.getElementById("sWeight").textContent =
+      weight >= 1000 ? (weight/1000).toFixed(2).replace(".",",") + " kg" : weight + " g";
+
+    var di = document.getElementById("dest").value;
+    var ship = null, tier = "", kota = null, kg = 0;
+    if (di !== "" && weight > 0){
+      kota = ONGKIR[Number(di)];
+      kg = Math.ceil(weight / 1000);
+      ship = kota.perKg * kg;
+      tier = "(" + kg + " kg)";
+    } else if (di !== ""){
+      kota = ONGKIR[Number(di)];
+    }
+    document.getElementById("sTier").textContent = tier;
+    document.getElementById("sShip").textContent = ship === null ? "—" : rp(ship);
+    var total = sub + (ship || 0);
+    document.getElementById("sTotal").textContent = rp(total);
+
+    state = { sub:sub, weight:weight, ship:ship, total:total, kota:kota, kg:kg };
+
+    var btn = document.getElementById("orderBtn");
+    if (keys.length && ship !== null){
+      btn.href = waLink(buildMessage(keys));
+      btn.removeAttribute("aria-disabled");
+    } else {
+      btn.href = "#pesan";
+      btn.setAttribute("aria-disabled","true");
+    }
+  }
+
+  function buildMessage(keys){
+    var lines = ["Halo " + TOKO.nama + ", saya mau pesan:", ""];
+    keys.forEach(function(k){
+      var e = byKey[k];
+      lines.push("• " + e.p.nama + " " + e.v.label + " x" + cart[k] +
+                 " — " + rp(e.v.harga * cart[k]));
+    });
+    lines.push("");
+    lines.push("Kirim ke: " + state.kota.kota);
+    lines.push("Subtotal: " + rp(state.sub));
+    lines.push("Ongkir (" + state.kg + " kg): " + rp(state.ship));
+    lines.push("Total: " + rp(state.total));
+    lines.push("");
+    lines.push("Nama saya: ");
+    lines.push("Alamat lengkap: ");
+    lines.push("Patokan: ");
+    return lines.join("\n");
+  }
+
+  var toastEl = document.getElementById("toast"), tt;
+  function toast(m){
+    toastEl.textContent = m; toastEl.classList.add("on");
+    clearTimeout(tt); tt = setTimeout(function(){ toastEl.classList.remove("on"); }, 3000);
+  }
+
+  document.getElementById("orderBtn").addEventListener("click", function(e){
+    if (this.getAttribute("aria-disabled") === "true"){
+      e.preventDefault();
+      if (!Object.keys(cart).length) toast("Pilih produknya dulu ya.");
+      else toast("Pilih kota tujuan dulu, biar ongkirnya kehitung.");
+      document.getElementById("pesan").scrollIntoView({behavior:"smooth", block:"start"});
+    }
+  });
+
+  document.getElementById("dest").addEventListener("change", render);
+  render();
+})();
+</script>
